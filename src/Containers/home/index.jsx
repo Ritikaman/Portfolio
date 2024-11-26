@@ -1,0 +1,42 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import './styles.scss';
+import { Animate } from "react-simple-animate";
+const Home=()=>{
+
+    const navigate = useNavigate();
+
+    const handleNavigatetoContact=()=>{
+        navigate('/contact');
+    }
+    return(
+        <section id="home" className="home">
+            <div className="home__text-wrapper">
+                <h1>
+                    Hello, I'm Ritik Gupta,
+                    <br />
+                'Java' & 'Mern Stack' Developer
+                </h1>
+            </div>
+            
+            <Animate 
+            play
+            duration={1.1}
+            delay={0.1}
+            start={{
+                transform :'translateY(550px)',
+            }}
+            end={{
+                transform:'translatex(0px)',
+            }}
+            >
+
+            <div className="home__contact-me">
+                <button onClick={handleNavigatetoContact}>Hire Me</button>
+            </div>
+            </Animate>
+        </section>
+    )
+}
+
+export default Home;
