@@ -62,8 +62,8 @@
   }
   
   .banner p {
-    font-size: 16px;
-    color: black;
+    font-size: 18px;
+    color: white;
     line-height: 1.6;
     margin-bottom: 25px;
   }
@@ -71,10 +71,10 @@
   .banner button {
     display: inline-flex;
     align-items: center;
-    background-color: #ff6f61;
+    background-color: #641414;
     margin-top: 20px;
     margin-left: 10px;
-    color: white;
+    color: black;
     border: none;
     border-radius: 25px;
     padding: 10px 20px;
@@ -85,13 +85,17 @@
   }
   
   .banner button:hover {
-    background-color: #e85550;
+    background-color: #913131;
   }
   
   .banner img {
     max-width: 100%; /* Ensure images do not overflow */
-    height: 400px;
+    height: 300px;
     animation: bounce 3s infinite;
+    border-radius: 50%;
+    //height: 400px;
+    width: 300px;
+    margin-bottom: 30px;
   }
   
   /* Keyframes for bounce animation */

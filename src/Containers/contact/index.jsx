@@ -1,183 +1,51 @@
-import { useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import contactImg from "../../images/contact-img.svg";
-//import 'animate.css';
-import TrackVisibility from 'react-on-screen';
-import './styles.scss';
+import styles from './styles.scss';
 
-const Contact = () => {
-  const formInitialDetails = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    message: ''
-  }
-  const [formDetails, setFormDetails] = useState(formInitialDetails);
-  const [buttonText, setButtonText] = useState('Send');
-  const [status, setStatus] = useState({});
-
-  const onFormUpdate = (category, value) => {
-      setFormDetails({
-        ...formDetails,
-        [category]: value
-      })
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setButtonText("Sending...");
-    let response = await fetch("http://localhost:5000/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(formDetails),
-    });
-    setButtonText("Send");
-    let result = await response.json();
-    setFormDetails(formInitialDetails);
-    if (result.code == 200) {
-      setStatus({ succes: true, message: 'Message sent successfully'});
-    } else {
-      setStatus({ succes: false, message: 'Something went wrong, please try again later.'});
-    }
-  };
-
+function Contact() {
   return (
-    <section className="contact" id="connect">
-      <Container>
-        <Row className="align-items-center">
-          <Col size={12} md={6}>
-            <TrackVisibility>
-              {({ isVisible }) =>
-                <img className={isVisible ? "animate__animated animate__zoomIn" : ""} src={contactImg} alt="Contact Us"/>
-              }
-            </TrackVisibility>
-          </Col>
-          <Col size={12} md={6}>
-            <TrackVisibility>
-              {({ isVisible }) =>
-                <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                <h2>Get In Touch</h2>
-                <form onSubmit={handleSubmit}>
-                  <Row>
-                    <Col size={12} sm={6} className="px-1">
-                      <input type="text" value={formDetails.firstName} placeholder="First Name" onChange={(e) => onFormUpdate('firstName', e.target.value)} />
-                    </Col>
-                    <Col size={12} sm={6} className="px-1">
-                      <input type="text" value={formDetails.lasttName} placeholder="Last Name" onChange={(e) => onFormUpdate('lastName', e.target.value)}/>
-                    </Col>
-                    <Col size={12} sm={6} className="px-1">
-                      <input type="email" value={formDetails.email} placeholder="Email Address" onChange={(e) => onFormUpdate('email', e.target.value)} />
-                    </Col>
-                    <Col size={12} sm={6} className="px-1">
-                      <input type="tel" value={formDetails.phone} placeholder="Phone No." onChange={(e) => onFormUpdate('phone', e.target.value)}/>
-                    </Col>
-                    <Col size={12} className="px-1">
-                      <textarea rows="6" value={formDetails.message} placeholder="Message" onChange={(e) => onFormUpdate('message', e.target.value)}></textarea>
-                      <button type="submit"><span>{buttonText}</span></button>
-                    </Col>
-                    {
-                      status.message &&
-                      <Col>
-                        <p className={status.success === false ? "danger" : "success"}>{status.message}</p>
-                      </Col>
-                    }
-                  </Row>
-                </form>
-              </div>}
-            </TrackVisibility>
-          </Col>
-        </Row>
-      </Container>
+    <section id="contact" className={styles.container} style={{display:"flex",justifyContent:"center"}}>
+      {/* <h1 className="sectionTitle" >Contact</h1> */}
+      <form style={{marginTop:"50px"}} action=""><h1 style={{marginLeft:"70px",fontSize:"50px",color:"var(--yellow-theme-main-color)"}}>Contact Me</h1>
+        <div className="formGroup">
+          <label htmlFor="name" hidden>
+            Name
+          </label>
+          <input
+          style={{width:"400px"}}
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Name"
+            required
+          />
+        </div>
+        <div className="formGroup">
+          <label htmlFor="email" hidden>
+            Email
+          </label>
+          <input
+          style={{width:"400px"}}
+            type="text"
+            name="email"
+            id="email"
+            placeholder="Email"
+            required
+          />
+        </div>
+        <div className="formGroup">
+          <label htmlFor="message" hidden>
+            Message
+          </label>
+          <textarea
+          style={{width:"400px"}}
+            name="message"
+            id="message"
+            placeholder="Message"
+            required></textarea>
+        </div>
+        <input className="hover btn" type="submit" value="Submit" />
+      </form>
     </section>
-  )
+  );
 }
 
 export default Contact;
-
-// import React from "react";
-// //import PageHeaderContent from "../../components/pageHeaderContent";
-// import { BsInfoCircleFill } from "react-icons/bs";
-// import { Animate } from "react-simple-animate";
-// import "./styles.scss";
-// import PageHeaderContent from "../../Components/pageHeaderContent";
-
-// const Contact = () => {
-//   return (
-//     <section id="contact" className="contact">
-//       <PageHeaderContent
-//         headerText="Contact Me"
-//         icon={<BsInfoCircleFill size={40} />}
-//       />
-//       <div className="contact__content">
-//         <Animate
-//           play
-//           duration={1}
-//           delay={0}
-//           start={{
-//             transform: "translateX(-200px)",
-//           }}
-//           end={{
-//             transform: "translateX(0px)",
-//           }}
-//         >
-//           <h3 className="contact__content__header-text">Let's Talk</h3>
-//         </Animate>
-//         <Animate
-//           play
-//           duration={1}
-//           delay={0}
-//           start={{
-//             transform: "translateX(200px)",
-//           }}
-//           end={{
-//             transform: "translateX(0px)",
-//           }}
-//         >
-//           <div className="contact__content__form">
-//             <div className="contact__content__form__controlswrapper">
-//               <div>
-//                 <input
-//                   required
-//                   name="name"
-//                   className="inputName"
-//                   type={"text"}
-//                 />
-//                 <label htmlFor="name" className="nameLabel">
-//                   Name
-//                 </label>
-//               </div>
-//               <div>
-//                 <input
-//                   required
-//                   name="email"
-//                   className="inputEmail"
-//                   type={"text"}
-//                 />
-//                 <label htmlFor="email" className="emailLabel">
-//                   Email
-//                 </label>
-//               </div>
-//               <div>
-//                 <textarea
-//                   required
-//                   name="description"
-//                   className="inputDescription"
-//                   type={"text"}
-//                   rows="5"
-//                 />
-//                 <label htmlFor="description" className="descriptionLabel">
-//                   Description
-//                 </label>
-//               </div>
-//             </div>
-//             <button>Submit</button>
-//           </div>
-//         </Animate>
-//       </div>
-//     </section>
-//   );
-// };
-// export default Contact;

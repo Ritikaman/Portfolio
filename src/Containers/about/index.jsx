@@ -2,7 +2,7 @@ import React from "react";
 
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import headerImg from "../../images/header-img.svg";
+import Image6 from "../../images/image6.jpeg";
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 //import 'animate.css';
 import TrackVisibility from 'react-on-screen';
@@ -62,7 +62,7 @@ const About = () => {
             <TrackVisibility>
               {({ isVisible }) =>
                 <div className={isVisible ? "animate__animated animate__zoomIn" : ""} style={{display:"flex",justifyContent:"center"}}>
-                  <img src={headerImg} alt="Header Img"/>
+                  <img src={Image6} alt="Header Img"/>
                 </div>}
             </TrackVisibility>
           </Col>
@@ -71,8 +71,8 @@ const About = () => {
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn" : "" }>
                 {/* <span className="tagline">Welcome to my Portfolio</span> */}
-                <h1 style={{display:"flex",justifyContent:"center"}}>{`Hi! I'm Ritik Gupta`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Web Developer", "Java Developer", "Mern Developer" ]'><span className="wrap">{text}</span></span></h1>
-                  <p style={{marginLeft:"30px"}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <h1 style={{display:"flex",justifyContent:"center",color:"var(--yellow-theme-main-color)"}}>{`Hi! I'm Ritik Gupta`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Web Developer", "Java Developer", "Mern Developer" ]'><span className="wrap">{text}</span></span></h1>
+                  <p style={{marginLeft:"30px"}}>I am Ritik Gupta, Aspiring Java and Mern Stack Developer, Post-graduated in Master's in Computer Application(MCA) from Guru Gobind Singh Indraprastha University(USICT).I have learned multiple languages and framework throughout my academics like React.js, Express.js, MongoDB, Java, JavaScript, Mysql, and Node.js.Beyond academics I have my interests in playing cricket and badminton.</p>
                   <button onClick={handleNavigate}>Let’s Connect <ArrowRightCircle size={25} /></button>
               </div>}
             </TrackVisibility>
