@@ -24,7 +24,7 @@ const portfolioData = [
   },
 //   {
 //     id: 2,
-//     name: "PORFOLIO",
+//     name: "PORTFOLIO",
 //     image: ImageThree,
 //     link: "",
 //   },
